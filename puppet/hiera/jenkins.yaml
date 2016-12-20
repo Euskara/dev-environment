@@ -1,0 +1,5 @@
+---
+
+jenkins::java_version: '8'
+jenkins::jenkins_version: '2.19.2-1.1'
+jenkins::docker_version: '1.12.3-1.el7.centos'

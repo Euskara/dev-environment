@@ -1,0 +1,5 @@
+---
+
+hadoop::java_version: '8'
+
+hadoop::master_hostname: master-hadoop-1.vagrant.local

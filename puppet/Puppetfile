@@ -1,0 +1,47 @@
+forge "https://forgeapi.puppetlabs.com"
+
+mod 'vagrant-profiles', :path => 'profiles'
+mod 'vagrant-roles', :path => 'roles'
+mod 'vagrant-static_files', :path => 'static_files'
+
+# development modules
+mod 'vagrant-hue', :path => 'dev-modules/hue'
+mod 'vagrant-zookeeper_rest', :path => 'dev-modules/zookeeper_rest'
+mod 'vagrant-hadoop', :path => 'dev-modules/hadoop'
+
+mod 'puppet-hue',
+  :git => "https://github.com/Euskara/puppet-hue.git"
+mod 'puppet-zookeeper_rest',
+  :git => "https://github.com/Euskara/puppet-zookeeper_rest.git"
+mod 'puppetlabs-hadoop',
+  :git => "https://github.com/Euskara/puppet-hadoop.git"
+
+
+#utils modules
+mod 'saz-vim', '2.4.0'                      #2016/11/09
+mod 'puppetlabs-java', '1.6.0'              #2016/11/09
+mod 'puppet-archive', '1.1.2'               #2016/11/09
+mod 'puppetlabs-git', '0.5.0'               #2016/11/15
+mod 'stankevich-python', '1.18.1'
+mod 'maestrodev-maven', '1.4.0'
+mod 'camptocamp-systemd', '0.4.0'
+mod 'ghoneycutt-ssh', '3.49.0'
+
+
+# apps modules
+
+mod 'lesaux-kibana4', '1.0.17'              #2016/11/09
+mod 'elasticsearch-logstash', '0.6.4'       #2016/11/09
+mod 'elasticsearch-elasticsearch', '0.14.0' #2016/11/09
+
+mod 'rtyler-jenkins', '1.7.0'               #2016/11/15
+
+mod 'hubspot-nexus', '1.7.1'                #2016/11/15
+
+mod 'deric/zookeeper', '0.6.1'              #2016/11/20
+mod 'deric/mesos', '0.8.2'                  #2016/11/20
+mod 'praekeltfoundation/marathon', '0.4.2'  #2016/11/20
+
+mod 'garethr/docker', '5.3.0'               #2016/11/20
+
+mod 'jfryman-nginx', '0.3.0'                #2016/11/21

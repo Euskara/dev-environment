@@ -1,0 +1,22 @@
+---
+
+elk::java_version: '8'
+
+elk::elasticsearch::version: '2.4.1'
+elk::elasticsearch::instance_name: 'elk'
+
+elk::elasticsearch::modz_elasticsearch_head::ensure: 'present'
+elk::elasticsearch::royrusso_elasticsearch_hq::ensure: 'absent'
+elk::elasticsearch::lmenezes_elasticsearch_kopf::ensure: 'absent'
+
+elk::logstash::version: '2.4.0'
+
+elk::logstash::azureeventhub::ensure: 'absent'
+elk::logstash::azureeventhub::key: 'your eventhub key'
+elk::logstash::azureeventhub::username: 'your user name'
+elk::logstash::azureeventhub::namespace: 'your name space'
+elk::logstash::azureeventhub::evenhub: 'your eventhub'
+elk::logstash::azureeventhub::partitions: 'number of partitions'
+elk::logstash::azureeventhub::consumer_group: '$Default'
+
+elk::kibana::version: '4.6.1'

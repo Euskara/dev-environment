@@ -1,0 +1,6 @@
+---
+
+nexus::java_version: '8'
+yum::nexus_version: '2.14.1'
+yum::nexus_revision: '01'
+yum::createrepo_version: '0.9.9-25.el7_2'

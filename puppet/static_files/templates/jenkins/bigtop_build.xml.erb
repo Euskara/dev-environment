@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<matrix-project plugin="matrix-project@1.7.1">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.plugins.disk__usage.DiskUsageProperty plugin="disk-usage@0.28"/>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@3.0.0">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/axier/bigtop</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <axes>
+    <hudson.matrix.TextAxis>
+      <name>BUILD_ENVIRONMENTS</name>
+      <values>
+        <string>centos-7</string>
+      </values>
+    </hudson.matrix.TextAxis>
+    <hudson.matrix.TextAxis>
+      <name>COMPONENTS</name>
+      <values>
+        <string>apex</string>
+        <string>alluxio</string>
+        <string>bigtop-groovy</string>
+        <string>bigtop-jsvc</string>
+        <string>bigtop-tomcat</string>
+        <string>bigtop-utils</string>
+        <string>crunch</string>
+        <string>datafu</string>
+        <string>flume</string>
+        <string>flink</string>
+        <string>giraph</string>
+        <string>hadoop</string>
+        <string>hama</string>
+        <string>hbase</string>
+        <string>hive</string>
+        <string>hue</string>
+        <string>ignite-hadoop</string>
+        <string>kafka</string>
+        <string>kite</string>
+        <string>mahout</string>
+        <string>oozie</string>
+        <string>phoenix</string>
+        <string>pig</string>
+        <string>qfs</string>
+        <string>solr</string>
+        <string>spark1</string>
+        <string>spark</string>
+        <string>sqoop</string>
+        <string>sqoop2</string>
+        <string>tachyon</string>
+        <string>tajo</string>
+        <string>tez</string>
+        <string>ycsb</string>
+        <string>zookeeper</string>
+        <string>zeppelin</string>
+      </values>
+    </hudson.matrix.TextAxis>
+  </axes>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>docker run --net=host --rm -v `pwd`:/ws --workdir /ws bigtop/slaves:trunk-$BUILD_ENVIRONMENTS \
+bash -l -c &quot;. /etc/profile.d/bigtop.sh; ./gradlew allclean; ./gradlew $COMPONENTS-pkg&quot;</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+  <executionStrategy class="hudson.matrix.DefaultMatrixExecutionStrategyImpl">
+    <runSequentially>false</runSequentially>
+  </executionStrategy>
+</matrix-project>

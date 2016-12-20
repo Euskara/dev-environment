@@ -1,0 +1,9 @@
+---
+
+mesos::java_version: '8'
+mesos_master::zookeeper_servers: [ 'master-mesos-1.vagrant.local', 'master-mesos-2.vagrant.local', 'master-mesos-3.vagrant.local' ]
+mesos_master::mesos_version: '1.0.1-2.0.93.centos701406'
+mesos_master::cluster_name: 'mesos'
+marathon::marathon_version: '1.3.5-1.0.537.el7'
+mesos_slave::mesos_version: '1.0.1-2.0.93.centos701406'
+mesos_slave::docker_version: '1.12.3-1.el7.centos'
