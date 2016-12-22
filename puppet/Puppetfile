@@ -4,15 +4,10 @@ mod 'vagrant-profiles', :path => 'profiles'
 mod 'vagrant-roles', :path => 'roles'
 mod 'vagrant-static_files', :path => 'static_files'
 
-# development modules
-mod 'vagrant-hue', :path => 'dev-modules/hue'
-mod 'vagrant-zookeeper_rest', :path => 'dev-modules/zookeeper_rest'
-mod 'vagrant-hadoop', :path => 'dev-modules/hadoop'
-
-mod 'puppet-hue',
-  :git => "https://github.com/Euskara/puppet-hue.git"
-mod 'puppet-zookeeper_rest',
-  :git => "https://github.com/Euskara/puppet-zookeeper_rest.git"
+#mod 'puppet-hue',
+#  :git => "https://github.com/Euskara/puppet-hue.git"
+#mod 'puppet-zookeeper_rest',
+#  :git => "https://github.com/Euskara/puppet-zookeeper_rest.git"
 mod 'puppetlabs-hadoop',
   :git => "https://github.com/Euskara/puppet-hadoop.git"
 
