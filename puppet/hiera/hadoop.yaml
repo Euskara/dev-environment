@@ -2,4 +2,8 @@
 
 hadoop::java_version: '8'
 
-hadoop::master_hostname: master-hadoop-1.vagrant.local
+hadoop::primary_namenode: 'namenode-hadoop-1.vagrant.local'
+hadoop::secondary_namenode: 'namenode-hadoop-2.vagrant.local'
+hadoop::datanodes: [ 'datanode-hadoop-1.vagrant.local' ]
+hadoop::journalnodes: [ 'journalnode-hadoop-1.vagrant.local', 'journalnode-hadoop-2.vagrant.local', 'journalnode-hadoop-3.vagrant.local' ]
+hadoop::zookeeper_servers: [ 'journalnode-hadoop-1.vagrant.local', 'journalnode-hadoop-2.vagrant.local', 'journalnode-hadoop-3.vagrant.local' ]
