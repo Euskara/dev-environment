@@ -41,3 +41,10 @@ roles:
     count: 1
     data:
       enable: false
+  hive:
+    environment: 'hadoop'
+    cpu: 1
+    memory: 1024
+    count: 1
+    data:
+      enable: false
