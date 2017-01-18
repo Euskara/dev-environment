@@ -2,6 +2,7 @@
 .librarian/
 .tmp/
 puppet/modules/*
+puppet/dev_modules/*
 datadisks/*
 *.lock
 !.gitkeep
