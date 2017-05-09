@@ -1,11 +1,11 @@
 ---
 plugins:
-  vagrant-vbguest: 0.13.0
-  vagrant-hostmanager: 1.8.5
-  vagrant-share: 1.1.5
+  vagrant-vbguest: 0.14.1
+  vagrant-hostmanager: 1.8.6
+  vagrant-share: 1.1.7
   vagrant-librarian-puppet: 0.9.2
   vagrant-puppet-install: 4.0.1
-  vagrant-persistent-storage: 0.0.23 # 0.0.24
+  vagrant-persistent-storage: 0.0.26
 vbguest: 
   enable: false
 hostmanager:
@@ -18,24 +18,10 @@ puppet:
   puppet_dir: 'puppet'
 persistent-storage:
   enable: false
-box: bento/centos-7.2
+box: bento/centos-7.3
 roles:
-  journalnode:
-    environment: 'hadoop'
-    cpu: 1
-    memory: 1024
-    count: 3
-    data:
-      enable: false
-  namenode:
-    environment: 'hadoop'
-    cpu: 1
-    memory: 1024
-    count: 2
-    data:
-      enable: false
-  datanode:
-    environment: 'hadoop'
+  standalone:
+    environment: 'hue'
     cpu: 1
     memory: 1024
     count: 1
