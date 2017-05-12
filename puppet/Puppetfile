@@ -13,6 +13,8 @@ mod 'vagrant-static_files', :path => 'static_files'
 mod 'puppet-hadoop',
    :git => "https://github.com/gudari/puppet-hadoop.git",
    :ref => 'refactor'
+mod 'puppet-kylin',
+   :git => "https://github.com/gudari/puppet-kylin.git"
 
 
 #utils modules

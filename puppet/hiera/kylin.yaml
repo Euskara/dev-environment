@@ -1,0 +1,7 @@
+---
+
+profiles::utils::java::version: '8'
+
+profiles::confs::kylin::standalone::version: '1.6.0'
+profiles::confs::kylin::standalone::hbase_version: '1.x'
+

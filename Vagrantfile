@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 # # vi: set ft=ruby :
- 
+
 # Specify minimum Vagrant version and Vagrant API version
 Vagrant.require_version ">= 1.6.0"
 VAGRANTFILE_API_VERSION = "2"
@@ -23,6 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #manage librarian-puppet:
   if CONFIG['puppet']['enable']
     config.librarian_puppet.puppetfile_dir = CONFIG['puppet']['puppet_dir']
+    config.librarian_puppet.placeholder_filename = ".gitkeep"
     config.puppet_install.puppet_version = CONFIG['puppet']['version'] ||:latest
   end
 
