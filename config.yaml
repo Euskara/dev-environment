@@ -18,9 +18,9 @@ puppet:
   puppet_dir: 'puppet'
 persistent-storage:
   enable: false
-box: bento/centos-7.3
 roles:
   standalone:
+    os: 'ubuntu16'
     environment: 'hue'
     cpu: 1
     memory: 1024
