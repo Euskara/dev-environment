@@ -14,6 +14,12 @@ CONFIG['plugins'].each do |plugin, version|
   system "vagrant plugin install #{plugin} --plugin-version #{version}" unless Vagrant.has_plugin?(plugin,version)
 end
 
+boxes = {
+  'centos73' => 'bento/centos-7.3',
+  'ubuntu16' => 'ubuntu/xenial64',
+  'win2012r2' => 'opentable/win-2012r2-standard-amd64-nocm'
+  }
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   $ipCount = 10
