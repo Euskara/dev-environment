@@ -10,7 +10,9 @@ mod 'vagrant-static_files', :path => 'static_files'
 #  :git => "https://github.com/Euskara/puppet-zookeeper_rest.git"
 #mod 'puppetlabs-hadoop',
 #  :git => "https://github.com/Euskara/puppet-hadoop.git"
-mod 'vagrant-hadoop', :path => 'dev_modules/puppet-hadoop'
+mod 'vagrant-hadoop',
+  :git => 'https://github.com/gudari/puppet-hadoop.git',
+  :ref => 'refactor'
 
 
 #utils modules

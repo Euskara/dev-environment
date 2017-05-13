@@ -23,6 +23,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #manage librarian-puppet:
   if CONFIG['puppet']['enable']
     config.librarian_puppet.puppetfile_dir = CONFIG['puppet']['puppet_dir']
+    config.librarian_puppet.placeholder_filename = ".gitkeep"
+    config.librarian_puppet.destructive = false
     config.puppet_install.puppet_version = CONFIG['puppet']['version'] ||:latest
   end
 

@@ -2,7 +2,7 @@
 plugins:
   vagrant-vbguest: 0.14.1
   vagrant-hostmanager: 1.8.6
-  vagrant-share: 1.1.7
+  vagrant-share: 1.1.5
   vagrant-librarian-puppet: 0.9.2
   vagrant-puppet-install: 4.0.1
   vagrant-persistent-storage: 0.0.26
@@ -21,9 +21,9 @@ persistent-storage:
 box: bento/centos-7.3
 roles:
   standalone:
-    environment: 'hue'
-    cpu: 1
-    memory: 1024
+    environment: 'hadoop'
+    cpu: 2
+    memory: 2048
     count: 1
     data:
       enable: false

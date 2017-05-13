@@ -1,6 +1,9 @@
 ---
 
 hadoop::java_version: '8'
+profiles::utils::java::version: '8'
+
+profiles::confs::hadoop::standalone::version: '2.8.0'
 
 hadoop::primary_namenode: 'namenode-hadoop-1.vagrant.local'
 hadoop::secondary_namenode: 'namenode-hadoop-2.vagrant.local'

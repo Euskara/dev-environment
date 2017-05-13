@@ -1,3 +1,6 @@
+node /^standalone-hadoop-(\d+).vagrant.local$/ {
+  include ::roles::hadoop::standalone
+}
 node /^namenode-hadoop-(\d+).vagrant.local$/ {
   include ::profiles::confs::hadoop::namenode
 }
