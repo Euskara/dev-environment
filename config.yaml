@@ -19,11 +19,28 @@ puppet:
 persistent-storage:
   enable: false
 roles:
-  standalone:
+  windows:
+    os: 'win2012r2'
+    environment: 'default'
+    cpu: 1
+    memory: 2048
+    count: 1
+    data:
+      enable: false
+  ubuntu:
     os: 'ubuntu16'
-    environment: 'hue'
+    environment: 'default'
     cpu: 1
     memory: 1024
     count: 1
     data:
       enable: false
+  centos:
+    os: 'centos73'
+    environment: 'default'
+    cpu: 1
+    memory: 1024
+    count: 1
+    data:
+      enable: false
+

@@ -1,3 +1,3 @@
 node default {
-  class { '::vim': }
+  notify { 'all os': }
 }
