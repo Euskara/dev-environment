@@ -6,8 +6,8 @@ class profiles::apps::hadoop::base (
   $journal_nodes = undef,
   $primary_resourcemanager,
   $nodemanager_nodes,
-  $historyserver,
-  $timelineserver,
+  $historyserveri = undef,
+  $timelineserver = undef,
   $zookeeper_nodes = undef,
 )
 {
@@ -32,3 +32,4 @@ class profiles::apps::hadoop::base (
   }
 
 }
+
