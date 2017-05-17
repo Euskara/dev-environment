@@ -6,7 +6,7 @@ class profiles::apps::hadoop::base (
   $journal_nodes = undef,
   $primary_resourcemanager,
   $nodemanager_nodes,
-  $historyserveri = undef,
+  $historyserver = undef,
   $timelineserver = undef,
   $zookeeper_nodes = undef,
 )

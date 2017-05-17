@@ -7,6 +7,8 @@ class profiles::confs::hadoop::namenode (
   $primary_resourcemanager,
   $secondary_resourcemanager = undef,
   $nodemanager_nodes,
+  $historyserver = undef,
+  $timelineserver = undef,
 
 ){
 
@@ -16,6 +18,8 @@ class profiles::confs::hadoop::namenode (
     datanodes               => $datanodes,
     primary_resourcemanager => $primary_resourcemanager,
     nodemanager_nodes       => $nodemanager_nodes,
+    historyserver           => $historyserver,
+    timelineserver          => $timelineserver,
   }
 
 }

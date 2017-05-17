@@ -11,7 +11,8 @@ profiles::confs::hadoop::namenode::primary_namenode: 'namenode-hadoop-1.vagrant.
 profiles::confs::hadoop::namenode::datanodes: [ 'datanode-hadoop-1.vagrant.local', 'datanode-hadoop-2.vagrant.local', 'datanode-hadoop-3.vagrant.local' ]
 profiles::confs::hadoop::namenode::primary_resourcemanager: 'namenode-hadoop-1.vagrant.local'
 profiles::confs::hadoop::namenode::nodemanager_nodes: [ 'datanode-hadoop-1.vagrant.local', 'datanode-hadoop-2.vagrant.local', 'datanode-hadoop-3.vagrant.local' ]
-
+profiles::confs::hadoop::namenode::historyserver: 'namenode-hadoop-1.vagrant.local'
+profiles::confs::hadoop::namenode::timelineserver: 'namenode-hadoop-1.vagrant.local'
 profiles::confs::hadoop::datanode::primary_namenode: 'namenode-hadoop-1.vagrant.local'
 profiles::confs::hadoop::datanode::datanodes: [ 'datanode-hadoop-1.vagrant.local', 'datanode-hadoop-2.vagrant.local', 'datanode-hadoop-3.vagrant.local' ]
 profiles::confs::hadoop::datanode::primary_resourcemanager: 'namenode-hadoop-1.vagrant.local'
