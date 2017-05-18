@@ -1,0 +1,4 @@
+---
+
+profiles::utils::java::version: '8'
+profiles::confs::nifi::standalone::version: '1.2.0'
