@@ -1,8 +1,8 @@
 ---
 plugins:
-  vagrant-vbguest: 0.14.1
+  vagrant-vbguest: 0.14.2
   vagrant-hostmanager: 1.8.6
-  vagrant-share: 1.1.7
+  vagrant-share: 1.1.5
   vagrant-librarian-puppet: 0.9.2
   vagrant-puppet-install: 4.0.1
   vagrant-persistent-storage: 0.0.26
@@ -14,16 +14,33 @@ hostmanager:
   manage_guest: true
 puppet:
   enable: true
-  version: '4.8.1'
+  version: '4.10.1'
   puppet_dir: 'puppet'
 persistent-storage:
   enable: false
-box: bento/centos-7.3
 roles:
-  standalone:
-    environment: 'hue'
+  windows:
+    os: 'win2012r2'
+    environment: 'default'
+    cpu: 1
+    memory: 2048
+    count: 1
+    data:
+      enable: false
+  ubuntu:
+    os: 'ubuntu16'
+    environment: 'default'
     cpu: 1
     memory: 1024
     count: 1
     data:
       enable: false
+  centos:
+    os: 'centos73'
+    environment: 'default'
+    cpu: 1
+    memory: 1024
+    count: 1
+    data:
+      enable: false
+

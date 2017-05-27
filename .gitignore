@@ -5,4 +5,5 @@ puppet/modules/*
 puppet/dev_modules/*
 datadisks/*
 *.lock
+*.log
 !.gitkeep
