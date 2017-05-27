@@ -2,3 +2,18 @@
 
 profiles::utils::java::version: '8'
 profiles::confs::nifi::standalone::version: '1.2.0'
+
+profiles::confs::zookeeper::standalone::id: '1'
+profiles::confs::zookeeper::standalone::servers: [ ]
+
+profiles::confs::nifi::node::version: '1.2.0'
+profiles::confs::nifi::node::zookeeper_servers: [ 'master-nifi-1.vagrant.local' ]
+profiles::confs::nifi::node::custom_properties:
+  nifi.cluster.flow.election.max.wait.time: '1 mins'
+  nifi.cluster.flow.election.max.candidates: 3
+  nifi.zookeeper.connect.string: 'master-nifi-1.vagrant.local:2181'
+profiles::confs::nifi::node::custom_state_management:
+  cluster-provider:
+    property:
+      Connect String: 'master-nifi-1.vagrant.local:2181'
+

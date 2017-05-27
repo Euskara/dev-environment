@@ -7,7 +7,7 @@ class profiles::apps::zookeeper::base (
 {
 
   class { '::zookeeper':
-    client_ip            => $::ipaddress_enp0s8,
+    client_ip            => '0.0.0.0',
     id                   => $id,
     servers              => $servers,
     repo                 => 'cloudera',

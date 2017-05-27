@@ -12,19 +12,22 @@ mod 'vagrant-static_files', :path => 'static_files'
 #  :git => "https://github.com/Euskara/puppet-hadoop.git"
 #mod 'vagrant-hadoop', :path => 'dev_modules/puppet-hadoop'
 mod 'puppet-nifi',
-   :git => "https://github.com/gudari/puppet-nifi.git"
-
+  :git => "https://github.com/gudari/puppet-nifi.git",
+  :ref => 'custom_config'
+mod 'puppetlabs-java',
+  :git => "https://github.com/gudari/puppetlabs-java.git",
+  :ref => 'fix_java_url'
 
 #utils modules
 mod 'saz-vim', '2.4.0'                      #2016/11/09
-mod 'puppetlabs-java', '1.6.0'              #2016/11/09
+#mod 'puppetlabs-java', '1.6.0'              #2016/11/09
 mod 'puppet-archive', '1.1.2'               #2016/11/09
 mod 'puppetlabs-git', '0.5.0'               #2016/11/15
 mod 'stankevich-python', '1.18.1'
 mod 'maestrodev-maven', '1.4.0'
 mod 'camptocamp-systemd', '0.4.0'
 mod 'ghoneycutt-ssh', '3.49.0'
-mod 'gini-gradle', '0.2.0'
+#mod 'gini-gradle', '0.2.0'
 
 
 # apps modules
