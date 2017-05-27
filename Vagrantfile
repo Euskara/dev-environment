@@ -48,7 +48,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	else
           machine.vm.hostname = "#{role}-#{conf['environment']}-#{count}.vagrant.local"
 	end
-        machine.hostmanager.aliases = %w(#{role}-#{conf['environment']}-#{count}.vagrant.local. #{role}-#{conf['environment']}-#{count})
+        machine.hostmanager.aliases = [ "#{role}-#{conf['environment']}-#{count}.vagrant.local.",  "#{role}-#{conf['environment']}-#{count}" ]
         machine.vm.network "private_network", ip: "172.16.0.#{$ipCount}"
         machine.vm.synced_folder '.', '/vagrant', disabled: true
 
