@@ -47,3 +47,7 @@ mod 'praekeltfoundation/marathon', '0.4.2'  #2016/11/20
 mod 'garethr/docker', '5.3.0'               #2016/11/20
 
 mod 'jfryman-nginx', '0.3.0'                #2016/11/21
+
+# Windows modules
+mod 'puppet-windowsfeature', '2.1.0'        #2017/05/16
+

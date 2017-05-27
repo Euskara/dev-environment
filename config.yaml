@@ -14,13 +14,13 @@ hostmanager:
   manage_guest: true
 puppet:
   enable: true
-  version: '4.8.1'
+  version: '4.10.1'
   puppet_dir: 'puppet'
 persistent-storage:
   enable: false
-box: bento/centos-7.3
 roles:
   master:
+    os: 'centos73'
     environment: 'nifi'
     cpu: 1
     memory: 2048
@@ -28,9 +28,11 @@ roles:
     data:
       enable: false
   node:
+    os: 'centos73'
     environment: 'nifi'
     cpu: 1
     memory: 2048
     count: 2
     data:
       enable: false
+
