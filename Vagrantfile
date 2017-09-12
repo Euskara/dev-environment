@@ -68,7 +68,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
         #install puppet
 	if BASE['puppet']['enable'] and windows.include?(conf['os'])
-	  machine.vm.provision "shell", path: "installPuppet.ps1"
+	  machine.vm.provision "shell", path: "scripts/installPuppet.ps1"
 	else
 	  machine.puppet_install.puppet_version = BASE['puppet']['version'] || :latest
 	end
