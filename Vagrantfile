@@ -7,10 +7,11 @@ VAGRANTFILE_API_VERSION = "2"
 
 # Require YAML module
 require 'yaml'
-CONFIG = YAML.load(File.read("#{File.dirname(__FILE__)}/config.yaml"))
+BASE   = YAML.load(File.read("#{File.dirname(__FILE__)}/config/base.yaml"))
+CONFIG = YAML.load(File.read("#{File.dirname(__FILE__)}/config/#{ENV['YAML']}.yaml"))
 
 #manage plugins
-CONFIG['plugins'].each do |plugin, version|
+BASE['plugins'].each do |plugin, version|
   system "vagrant plugin install #{plugin} --plugin-version #{version}" unless Vagrant.has_plugin?(plugin,version)
 end
 
@@ -25,24 +26,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   $ipCount = 10
 #manage virtual box guest tools:
-  config.vbguest.auto_update = CONFIG['vbguest']['enable'] || false
+  config.vbguest.auto_update = BASE['vbguest']['enable'] || false
 
 #manage librarian-puppet:
-  if CONFIG['puppet']['enable']
-    config.librarian_puppet.puppetfile_dir = CONFIG['puppet']['puppet_dir']
+  if BASE['puppet']['enable']
+    config.librarian_puppet.puppetfile_dir = BASE['puppet']['puppet_dir']
   end
 
 #manage dns resolution:
-  config.hostmanager.enabled = CONFIG['hostmanager']['enable'] || false
-  config.hostmanager.manage_host = CONFIG['hostmanager']['manage_host'] || false
-  config.hostmanager.manage_guest = CONFIG['hostmanager']['manage_guest'] || false
+  config.hostmanager.enabled = BASE['hostmanager']['enable'] || false
+  config.hostmanager.manage_host = BASE['hostmanager']['manage_host'] || false
+  config.hostmanager.manage_guest = BASE['hostmanager']['manage_guest'] || false
 
 #manage machines:
   CONFIG['roles'].each do |role, conf|
     (1..conf['count']).each do |count|
       config.vm.define "#{role}-#{conf['environment']}-#{count}" do |machine|
         $ipCount = $ipCount + 1
-        machine.vm.box = boxes[conf['os']]
+        machine.vm.box = BASE['boxes'][conf['os']]
 	if windows.include?(conf['os'])
 	  machine.vm.hostname = "#{role}-#{conf['environment']}-#{count}"
 	else
@@ -66,24 +67,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	end
 
         #install puppet
-	if CONFIG['puppet']['enable'] and windows.include?(conf['os'])
+	if BASE['puppet']['enable'] and windows.include?(conf['os'])
 	  machine.vm.provision "shell", path: "installPuppet.ps1"
 	else
-	  machine.puppet_install.puppet_version = CONFIG['puppet']['version'] || :latest
+	  machine.puppet_install.puppet_version = BASE['puppet']['version'] || :latest
 	end
 
 	#manage puppet:
-        if CONFIG['puppet']['enable']
-          machine.vm.synced_folder "#{CONFIG['puppet']['puppet_dir']}/hiera", '/hiera'
+        if BASE['puppet']['enable']
+          machine.vm.synced_folder "#{BASE['puppet']['puppet_dir']}/hiera", '/hiera'
           machine.vm.provision :puppet do |puppet|
-            puppet.hiera_config_path = "#{CONFIG['puppet']['puppet_dir']}/hiera.yaml"
-            puppet.environment_path = "#{CONFIG['puppet']['puppet_dir']}/environments"
+            puppet.hiera_config_path = "#{BASE['puppet']['puppet_dir']}/hiera.yaml"
+            puppet.environment_path = "#{BASE['puppet']['puppet_dir']}/environments"
             puppet.environment = conf['environment']
-            puppet.module_path = "#{CONFIG['puppet']['puppet_dir']}/modules"
+            puppet.module_path = "#{BASE['puppet']['puppet_dir']}/modules"
           end
         end
         if conf['data']['enable']
-          machine.persistent_storage.enabled = CONFIG['persistent-storage']['enable'] || false
+          machine.persistent_storage.enabled = BASE['persistent-storage']['enable'] || false
           machine.persistent_storage.location = "datadisks/#{role}-#{count}-#{conf['environment']}.vdi"
           machine.persistent_storage.size = conf['data']['size'] || 5000
           machine.persistent_storage.mountname = 'data'

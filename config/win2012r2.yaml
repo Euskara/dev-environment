@@ -1,0 +1,10 @@
+---
+roles:
+  windows:
+    os: 'win2012r2'
+    environment: 'default'
+    cpu: 1
+    memory: 2048
+    count: 1
+    data:
+      enable: false
