@@ -45,4 +45,4 @@ mod 'jfryman-nginx', '0.3.0'                #2016/11/21
 
 # Windows modules
 mod 'puppet-windowsfeature', '2.1.0'        #2017/05/16
-
+mod 'puppetlabs-chocolatey', '3.0.0'

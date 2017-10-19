@@ -15,12 +15,7 @@ BASE['plugins'].each do |plugin, version|
   system "vagrant plugin install #{plugin} --plugin-version #{version}" unless Vagrant.has_plugin?(plugin,version)
 end
 
-boxes = {
-  'centos73' => 'bento/centos-7.3',
-  'ubuntu16' => 'ubuntu/xenial64',
-  'win2012r2' => 'opentable/win-2012r2-standard-amd64-nocm'
-  }
-windows = ['win2012r2']
+windows = ['win2012r2', 'windows10']
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
@@ -29,7 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vbguest.auto_update = BASE['vbguest']['enable'] || false
 
 #manage librarian-puppet:
-  if BASE['puppet']['enable']
+  if BASE['librarian-puppet']['enable']
     config.librarian_puppet.puppetfile_dir = BASE['puppet']['puppet_dir']
   end
 
@@ -59,7 +54,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	    vb.gui  = true
 	    vb.customize ['modifyvm', :id, '--clipboard', 'bidirectional']
 	    vb.customize ['modifyvm', :id, '--draganddrop', 'bidirectional']
-	    vb.customize ['modifyvm', :id, '--vram', '12']
+	    vb.customize ['modifyvm', :id, '--vram', '64']
+      vb.customize ['modifyvm', :id, '--audio', 'pulse', '--audiocontroller', 'hda']
 	  end
           vb.name = "#{role}-#{conf['environment']}-#{count}.vagrant.local"
           vb.memory = conf['memory']

@@ -1,6 +1,6 @@
 ---
 roles:
-  windows:
+  ubuntu16:
     os: 'ubuntu16'
     environment: 'default'
     cpu: 1

@@ -1,0 +1,6 @@
+---
+
+profiles::utils::java::version: '8'
+
+profiles::confs::elasticsearch::standalone::version: '2.4.1'
+profiles::confs::elasticsearch::standalone::instance_name: 'standalone'

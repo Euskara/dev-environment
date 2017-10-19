@@ -1,0 +1,10 @@
+---
+roles:
+  windows10:
+    os: 'windows10'
+    environment: 'chocolatey'
+    cpu: 2
+    memory: 4096
+    count: 1
+    data:
+      enable: false

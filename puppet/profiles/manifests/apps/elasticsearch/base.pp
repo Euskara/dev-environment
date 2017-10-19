@@ -11,7 +11,7 @@ class profiles::apps::elasticsearch::base (
     restart_on_change => true,
     config => {
       'network' => {
-        'host' => '0.0.0.0',
+        'host' => $::ipaddress_enp0s8,
       },
     },
   }

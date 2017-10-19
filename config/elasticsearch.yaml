@@ -1,8 +1,8 @@
 ---
 roles:
-  centos73:
+  standalone:
     os: 'centos73'
-    environment: 'default'
+    environment: 'elasticsearch'
     cpu: 1
     memory: 2048
     count: 1
