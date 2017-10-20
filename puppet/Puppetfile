@@ -46,3 +46,12 @@ mod 'jfryman-nginx', '0.3.0'                #2016/11/21
 # Windows modules
 mod 'puppet-windowsfeature', '2.1.0'        #2017/05/16
 mod 'puppetlabs-chocolatey', '3.0.0'
+
+mod 'sensu-sensu', '2.35.0'
+mod 'arioch-redis', '3.1.0'
+mod 'puppet-grafana', '4.0.2'
+mod 'puppet-rabbitmq', '8.0.0'
+mod 'puppet-kafka', '4.0.0'
+mod 'yelp-uchiwa', '2.0.0'
+mod 'golja-influxdb', '4.0.0'
+mod 'garethr-erlang', '0.3.0'
