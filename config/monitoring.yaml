@@ -1,0 +1,26 @@
+---
+roles:
+  standalone:
+    os: 'centos73'
+    environment: 'sensu'
+    cpu: 2
+    memory: 2048
+    count: 1
+    data:
+      enable: false
+  standalone:
+    os: 'centos73'
+    environment: 'grafana'
+    cpu: 2
+    memory: 2048
+    count: 1
+    data:
+      enable: false
+  standalone:
+    os: 'centos73'
+    environment: 'kafka'
+    cpu: 2
+    memory: 2048
+    count: 1
+    data:
+      enable: false
