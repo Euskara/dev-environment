@@ -1,6 +1,6 @@
 ---
 roles:
-  standalone:
+  standalone1:
     os: 'centos73'
     environment: 'sensu'
     cpu: 2
@@ -8,7 +8,7 @@ roles:
     count: 1
     data:
       enable: false
-  standalone:
+  standalone2:
     os: 'centos73'
     environment: 'grafana'
     cpu: 2
@@ -16,7 +16,7 @@ roles:
     count: 1
     data:
       enable: false
-  standalone:
+  standalone3:
     os: 'centos73'
     environment: 'kafka'
     cpu: 2
