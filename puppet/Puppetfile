@@ -52,6 +52,8 @@ mod 'arioch-redis', '3.1.0'
 mod 'puppet-grafana', '4.0.2'
 mod 'puppet-rabbitmq', '8.0.0'
 mod 'puppet-kafka', '4.0.0'
-mod 'yelp-uchiwa', '2.0.0'
+mod 'yelp-uchiwa',
+  :git => 'https://github.com/gudari/puppet-uchiwa.git',
+  :ref => '43a13a32af6459a2330858710870a2fa9419296f'
 mod 'golja-influxdb', '4.0.0'
 mod 'garethr-erlang', '0.3.0'
