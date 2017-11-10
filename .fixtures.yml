@@ -1,0 +1,4 @@
+fixtures:
+  symlinks:
+    roles: "#{source_dir}/puppet/roles"
+    profiles: "#{source_dir}/puppet/profiles"
