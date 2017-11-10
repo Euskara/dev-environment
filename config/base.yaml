@@ -15,12 +15,12 @@ librarian-puppet:
   enable: false
 puppet:
   enable: true
-  version: '4.10.1'
+  version: 'latest'
   puppet_dir: 'puppet'
 persistent-storage:
   enable: false
 boxes:
-  centos73: 'bento/centos-7.3'
+  centos74: 'bento/centos-7.4'
   ubuntu16: 'ubuntu/xenial64'
   win2012r2: 'opentable/win-2012r2-standard-amd64-nocm'
   windows10: 'windows10'

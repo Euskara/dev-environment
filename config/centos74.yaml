@@ -1,7 +1,7 @@
 ---
 roles:
-  centos73:
-    os: 'centos73'
+  centos7:
+    os: 'centos74'
     environment: 'default'
     cpu: 1
     memory: 2048
