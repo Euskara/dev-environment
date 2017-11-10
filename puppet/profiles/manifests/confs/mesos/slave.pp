@@ -22,7 +22,7 @@ class profiles::confs::mesos::slave (
   }
 
   class{ '::mesos::slave':
-    work_dir => '/var/lib/mesos',
+    work_dir   => '/var/lib/mesos',
     attributes => {
       'env' => 'mesos',
     },
@@ -39,7 +39,7 @@ class profiles::confs::mesos::slave (
       'modules'                       => '{"libraries":[{"file":"/usr/lib/mesos/modules/liblogrotate_container_logger.so", "modules":[{"name":"org_apache_mesos_LogrotateContainerLogger"}]}]}',
       'container_logger'              => 'org_apache_mesos_LogrotateContainerLogger',
     },
-    require  => File[ $log_dir ],
+    require    => File[ $log_dir ],
   }
 
 }
