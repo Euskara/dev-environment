@@ -15,23 +15,23 @@ mod 'vagrant-static_files', :path => 'static_files'
 
 #utils modules
 mod 'saz-vim', '2.4.0'                      #2016/11/09
-mod 'puppetlabs-java', '1.6.0'              #2016/11/09
+mod 'puppetlabs-java', '2.1.0'              #2017/10/25
 mod 'puppet-archive', '1.1.2'               #2016/11/09
 mod 'puppetlabs-git', '0.5.0'               #2016/11/15
 mod 'stankevich-python', '1.18.1'
 mod 'maestrodev-maven', '1.4.0'
 mod 'camptocamp-systemd', '0.4.0'
 mod 'ghoneycutt-ssh', '3.49.0'
-mod 'gini-gradle', '0.2.0'
+#mod 'gini-gradle', '0.2.0'
 
 
 # apps modules
 
 mod 'lesaux-kibana4', '1.0.17'              #2016/11/09
 mod 'elasticsearch-logstash', '0.6.4'       #2016/11/09
-mod 'elasticsearch-elasticsearch', '0.14.0' #2016/11/09
+mod 'elastic-elasticsearch', '5.4.3'        #2017/10/25
 
-mod 'rtyler-jenkins', '1.7.0'               #2016/11/15
+# mod 'rtyler-jenkins', '1.7.0'               #2016/11/15
 
 mod 'hubspot-nexus', '1.7.1'                #2016/11/15
 
