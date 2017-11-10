@@ -3,8 +3,8 @@ class profiles::confs::elasticsearch::standalone (
   $instance_name,
 )
 {
-  class { '::profiles::utils::java': } ->
-  class { '::profiles::apps::elasticsearch::base':
+  class { '::profiles::utils::java': }
+  -> class { '::profiles::apps::elasticsearch::base':
     version       => $version,
     instance_name => $instance_name,
   }
