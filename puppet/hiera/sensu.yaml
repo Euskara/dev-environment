@@ -1,0 +1,4 @@
+---
+
+profiles::confs::rabbitmq::standalone::erlang_ensure: 'R16B-03.18.el7'
+profiles::confs::rabbitmq::standalone::ensure: '3.6.12-1.el7'
