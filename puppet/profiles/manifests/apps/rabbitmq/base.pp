@@ -1,7 +1,9 @@
 class profiles::apps::rabbitmq::base (
+  $ensure = 'present',
 )
 {
   class { 'rabbitmq':
+    package_ensure        => $ensure,
     repos_ensure          => true,
     service_manage        => true,
     port                  => 5672,
