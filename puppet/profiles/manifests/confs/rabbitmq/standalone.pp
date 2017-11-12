@@ -2,9 +2,9 @@ class profiles::confs::rabbitmq::standalone (
 
   $ensure,
   $erlang_ensure,
-  $users,
-  $vhosts,
-  $user_permissions,
+  $users            = {},
+  $vhosts           = {},
+  $user_permissions = {},
 
 ){
 
