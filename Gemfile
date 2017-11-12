@@ -19,6 +19,7 @@ gem 'hiera', '3.4.2'
 group :test do
   gem 'rspec', '3.7.0'
   gem 'rspec-puppet', '2.6.9'
+  gem 'rspec-puppet-facts', '1.8.0'
   gem 'puppetlabs_spec_helper', '2.4.0'
   gem 'mocha', '1.3.0'
   gem 'puppet-lint', '2.3.3'
