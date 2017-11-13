@@ -6,8 +6,21 @@ profiles::confs::rabbitmq::standalone::users:
   vagrant:
     admin: true
     password: 'vagrant'
+  dev:
+    password: 'p4ssw0rd'
+profiles::confs::rabbitmq::standalone::vhosts:
+  dev:
+    ensure: 'present'
 profiles::confs::rabbitmq::standalone::user_permissions:
   vagrant@/:
+    configure_permission: '.*'
+    read_permission: '.*'
+    write_permission: '.*'
+  vagrant@dev:
+    configure_permission: '.*'
+    read_permission: '.*'
+    write_permission: '.*'
+  dev@dev:
     configure_permission: '.*'
     read_permission: '.*'
     write_permission: '.*'
