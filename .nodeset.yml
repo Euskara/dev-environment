@@ -1,0 +1,7 @@
+---
+default_set: 'centos74'
+set:
+  'centos74':
+    nodes:
+      "main.foo.vm":
+        prefab: 'centos74'

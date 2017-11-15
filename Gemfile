@@ -26,3 +26,11 @@ group :test do
   gem 'puppet-syntax', '2.4.1'
 end
 
+group :acceptance do
+  gem 'beaker', '3.28.0'
+  gem 'beaker-rspec', '6.2.1'
+  gem 'serverspec', '2.41.3'
+  gem 'beaker-puppet_install_helper', '0.7.1'
+  gem 'beaker-module_install_helper', '0.1.5'
+end
+
