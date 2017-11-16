@@ -3,9 +3,10 @@ require 'spec_helper_acceptance'
 describe 'roles::rabbitmq::standalone' do
   let(:manifest) {
     <<-EOS
-include ::profiles::confs::rabbitmq::standalone
+include ::roles::rabbitmq::standalone
 EOS
   }
+
   it 'should apply without errors' do
     apply_manifest(manifest, :catch_failures => true)
   end
