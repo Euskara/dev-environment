@@ -1,0 +1,9 @@
+---
+roles:
+  standalone1:
+    os: 'centos74'
+    environment: 'sensu'
+    cpu: 2
+    memory: 2048
+    count: 1
+

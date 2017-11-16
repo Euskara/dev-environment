@@ -7,8 +7,15 @@ VAGRANTFILE_API_VERSION = "2"
 
 # Require YAML module
 require 'yaml'
-BASE   = YAML.load(File.read("#{File.dirname(__FILE__)}/config/base.yaml"))
-CONFIG = YAML.load(File.read("#{File.dirname(__FILE__)}/config/#{ENV['YAML']}.yaml"))
+# load base configuration
+BASE   = YAML.load(File.read(File.join(File.dirname(__FILE__), 'config','base.yaml')))
+#load default or saved configuration
+if ENV.has_value?('YAML')
+  config_yaml = "config/#{ENV['YAML']}.yaml"
+else
+  config_yaml = 'config.yaml'
+end
+CONFIG = YAML.load(File.read(File.join(File.dirname(__FILE__), config_yaml)))
 
 #manage plugins
 BASE['plugins'].each do |plugin, version|
