@@ -1,7 +1,7 @@
 ---
 roles:
   standalone:
-    os: 'centos73'
+    os: 'centos74'
     environment: 'elasticsearch'
     cpu: 1
     memory: 2048
