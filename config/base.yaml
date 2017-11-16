@@ -1,24 +1,15 @@
 ---
 plugins:
-  vagrant-vbguest: 0.15.0
   vagrant-hostmanager: 1.8.7
-  vagrant-librarian-puppet: 0.9.2
   vagrant-puppet-install: 5.0.0
-  vagrant-persistent-storage: 0.0.35
-vbguest: 
-  enable: false
 hostmanager:
   enable: true
   manage_host: true
   manage_guest: true
-librarian-puppet:
-  enable: false
 puppet:
   enable: true
   version: 'latest'
   puppet_dir: 'puppet'
-persistent-storage:
-  enable: false
 boxes:
   centos74: 'bento/centos-7.4'
   ubuntu16: 'ubuntu/xenial64'

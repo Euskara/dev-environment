@@ -6,5 +6,3 @@ roles:
     cpu: 1
     memory: 2048
     count: 1
-    data:
-      enable: false

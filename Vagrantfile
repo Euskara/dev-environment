@@ -20,13 +20,6 @@ windows = ['win2012r2', 'windows10']
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   $ipCount = 10
-#manage virtual box guest tools:
-  config.vbguest.auto_update = BASE['vbguest']['enable'] || false
-
-#manage librarian-puppet:
-  if BASE['librarian-puppet']['enable']
-    config.librarian_puppet.puppetfile_dir = BASE['puppet']['puppet_dir']
-  end
 
 #manage dns resolution:
   config.hostmanager.enabled = BASE['hostmanager']['enable'] || false
@@ -39,37 +32,37 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       config.vm.define "#{role}-#{conf['environment']}-#{count}" do |machine|
         $ipCount = $ipCount + 1
         machine.vm.box = BASE['boxes'][conf['os']]
-	if windows.include?(conf['os'])
-	  machine.vm.hostname = "#{role}-#{conf['environment']}-#{count}"
-	else
+	      if windows.include?(conf['os'])
+	        machine.vm.hostname = "#{role}-#{conf['environment']}-#{count}"
+	      else
           machine.vm.hostname = "#{role}-#{conf['environment']}-#{count}.vagrant.local"
-	end
+	      end
         machine.hostmanager.aliases = [ "#{role}-#{conf['environment']}-#{count}.vagrant.local.",  "#{role}-#{conf['environment']}-#{count}" ]
         machine.vm.network "private_network", ip: "172.16.0.#{$ipCount}"
         machine.vm.synced_folder '.', '/vagrant', disabled: true
 
         #manage machine resources:
         machine.vm.provider :virtualbox do |vb|
-	  if windows.include?(conf['os'])
-	    vb.gui  = true
-	    vb.customize ['modifyvm', :id, '--clipboard', 'bidirectional']
-	    vb.customize ['modifyvm', :id, '--draganddrop', 'bidirectional']
-	    vb.customize ['modifyvm', :id, '--vram', '64']
-      vb.customize ['modifyvm', :id, '--audio', 'pulse', '--audiocontroller', 'hda']
-	  end
+	        if windows.include?(conf['os'])
+	          vb.gui  = true
+	          vb.customize ['modifyvm', :id, '--clipboard', 'bidirectional']
+	          vb.customize ['modifyvm', :id, '--draganddrop', 'bidirectional']
+	          vb.customize ['modifyvm', :id, '--vram', '64']
+            vb.customize ['modifyvm', :id, '--audio', 'pulse', '--audiocontroller', 'hda']
+	        end
           vb.name = "#{role}-#{conf['environment']}-#{count}.vagrant.local"
           vb.memory = conf['memory']
           vb.cpus   = conf['cpu']
-	end
+	      end
 
         #install puppet
-	if BASE['puppet']['enable'] and windows.include?(conf['os'])
-	  machine.vm.provision "shell", path: "scripts/installPuppet.ps1"
-	else
-	  machine.puppet_install.puppet_version = BASE['puppet']['version'] || :latest
-	end
+	      if BASE['puppet']['enable'] and windows.include?(conf['os'])
+	        machine.vm.provision "shell", path: "scripts/installPuppet.ps1"
+	      else
+	        machine.puppet_install.puppet_version = BASE['puppet']['version'] || :latest
+	      end
 
-	#manage puppet:
+	      #manage puppet:
         if BASE['puppet']['enable']
           machine.vm.synced_folder "#{BASE['puppet']['puppet_dir']}/hiera", '/hiera'
           machine.vm.provision :puppet do |puppet|
@@ -78,14 +71,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             puppet.environment = conf['environment']
             puppet.module_path = "#{BASE['puppet']['puppet_dir']}/modules"
           end
-        end
-        if conf['data']['enable']
-          machine.persistent_storage.enabled = BASE['persistent-storage']['enable'] || false
-          machine.persistent_storage.location = "datadisks/#{role}-#{count}-#{conf['environment']}.vdi"
-          machine.persistent_storage.size = conf['data']['size'] || 5000
-          machine.persistent_storage.mountname = 'data'
-          machine.persistent_storage.filesystem = conf['data']['filesystem'] || 'ext4'
-          machine.persistent_storage.mountpoint = conf['data']['mountpoint'] || '/data'
         end
       end
     end
