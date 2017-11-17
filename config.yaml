@@ -1,9 +1,16 @@
 ---
-roles:
-  standalone1:
+nodes:
+  - name: 'standalone'
     os: 'centos74'
     environment: 'sensu'
     cpu: 2
     memory: 2048
     count: 1
+  - name: 'standalone'
+    os: 'centos74'
+    environment: 'rabbitmq'
+    cpu: 2
+    memory: 2048
+    count: 1
+
 

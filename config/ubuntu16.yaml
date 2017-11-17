@@ -1,6 +1,6 @@
 ---
-roles:
-  ubuntu16:
+nodes:
+  - name: 'ubuntu16'
     os: 'ubuntu16'
     environment: 'default'
     cpu: 1

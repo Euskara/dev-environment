@@ -1,6 +1,6 @@
 ---
-roles:
-  centos7:
+nodes:
+  - name: 'centos7'
     os: 'centos74'
     environment: 'default'
     cpu: 1

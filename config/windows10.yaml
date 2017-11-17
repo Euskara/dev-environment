@@ -1,6 +1,6 @@
 ---
-roles:
-  windows10:
+nodes:
+  - name: 'windows10'
     os: 'windows10'
     environment: 'default'
     cpu: 1

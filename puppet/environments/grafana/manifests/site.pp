@@ -1,3 +1,3 @@
-node /^standalone(\d*)-grafana-(\d+).vagrant.local$/ {
+node /^standalone-grafana-(\d+).vagrant.local$/ {
   include ::roles::grafana::standalone
 }

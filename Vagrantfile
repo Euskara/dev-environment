@@ -24,6 +24,7 @@ end
 
 windows = ['win2012r2', 'windows10']
 
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   $ipCount = 10
@@ -34,17 +35,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.hostmanager.manage_guest = BASE['hostmanager']['manage_guest'] || false
 
 #manage machines:
-  CONFIG['roles'].each do |role, conf|
+  CONFIG['nodes'].each do |conf|
     (1..conf['count']).each do |count|
-      config.vm.define "#{role}-#{conf['environment']}-#{count}" do |machine|
+      config.vm.define "#{conf['name']}-#{conf['environment']}-#{count}" do |machine|
         $ipCount = $ipCount + 1
         machine.vm.box = BASE['boxes'][conf['os']]
 	      if windows.include?(conf['os'])
-	        machine.vm.hostname = "#{role}-#{conf['environment']}-#{count}"
+	        machine.vm.hostname = "#{conf['name']}-#{conf['environment']}-#{count}"
 	      else
-          machine.vm.hostname = "#{role}-#{conf['environment']}-#{count}.vagrant.local"
+          machine.vm.hostname = "#{conf['name']}-#{conf['environment']}-#{count}.vagrant.local"
 	      end
-        machine.hostmanager.aliases = [ "#{role}-#{conf['environment']}-#{count}.vagrant.local.",  "#{role}-#{conf['environment']}-#{count}" ]
+        machine.hostmanager.aliases = [ "#{conf['name']}-#{conf['environment']}-#{count}.vagrant.local.",  "#{conf['name']}-#{conf['environment']}-#{count}" ]
         machine.vm.network "private_network", ip: "172.16.0.#{$ipCount}"
         machine.vm.synced_folder '.', '/vagrant', disabled: true
 
@@ -57,7 +58,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	          vb.customize ['modifyvm', :id, '--vram', '64']
             vb.customize ['modifyvm', :id, '--audio', 'pulse', '--audiocontroller', 'hda']
 	        end
-          vb.name = "#{role}-#{conf['environment']}-#{count}.vagrant.local"
+          vb.name = "#{conf['name']}-#{conf['environment']}-#{count}.vagrant.local"
           vb.memory = conf['memory']
           vb.cpus   = conf['cpu']
 	      end

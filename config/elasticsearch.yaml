@@ -1,6 +1,6 @@
 ---
-roles:
-  standalone:
+nodes:
+  - name: 'standalone'
     os: 'centos74'
     environment: 'elasticsearch'
     cpu: 1

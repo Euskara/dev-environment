@@ -1,6 +1,6 @@
 ---
-roles:
-  win2012r2:
+nodes:
+  - name: 'win2012r2'
     os: 'win2012r2'
     environment: 'default'
     cpu: 1
