@@ -9,18 +9,18 @@ profiles::confs::rabbitmq::standalone::users:
   sensu:
     password: 'sensu'
 profiles::confs::rabbitmq::standalone::vhosts:
-  /sensu:
-    ensure: true
+  sensu:
+    ensure: 'present'
 profiles::confs::rabbitmq::standalone::user_permissions:
   vagrant@/:
     configure_permission: '.*'
     read_permission: '.*'
     write_permission: '.*'
-  vagrant@/sensu:
+  vagrant@sensu:
     configure_permission: '.*'
     read_permission: '.*'
     write_permission: '.*'
-  sensu@/sensu:
+  sensu@sensu:
     configure_permission: '.*'
     read_permission: '.*'
     write_permission: '.*'

@@ -67,23 +67,145 @@ describe 'roles::sensu::standalone' do
          .with(:password => 'sensu')
     }
 
-    it { is_expected.to contain_rabbitmq_vhost('/sensu')
-         .with(:ensure => true)
+    it { is_expected.to contain_rabbitmq_vhost('sensu')
+         .with(:ensure => 'present')
     }
 
     it { is_expected.to contain_rabbitmq_user_permissions('vagrant@/')
          .with(:configure_permission => '.*', :read_permission => '.*', :write_permission =>'.*')
     }
 
-    it { is_expected.to contain_rabbitmq_user_permissions('vagrant@/sensu')
+    it { is_expected.to contain_rabbitmq_user_permissions('vagrant@sensu')
          .with(:configure_permission =>'.*', :read_permission => '.*', :write_permission => '.*')
+    }
+
+    it { is_expected.to contain_rabbitmq_user_permissions('sensu@sensu')
+         .with(:configure_permission => '.*', :read_permission => '.*', :write_permission => '.*')
     }
 
   end
 
   it { is_expected.to contain_class('profiles::confs::redis::standalone') }
+  
+  describe 'profiles::confs::redis::standalone' do
+
+    it { is_expected.to contain_class('profiles::apps::redis::base') }
+
+    describe 'profiles::apps::redis::base' do
+
+      it { is_expected.to contain_class('redis')
+           .with(:bind => '172.16.0.10')
+      }
+
+    end
+
+  end
+
   it { is_expected.to contain_class('profiles::confs::sensu::standalone') }
+
+  describe 'profiles::confs::sensu::standalone' do
+
+    it { is_expected.to contain_class('profiles::apps::sensu::base') }
+
+    describe 'profiles::apps::sensu::base' do
+
+      it { is_expected.to contain_class('sensu')
+           .with(
+             :server            => true,
+             :api               => true,
+             :rabbitmq_host     => '172.16.0.10',
+             :rabbitmq_user     => 'sensu',
+             :rabbitmq_password => 'sensu',
+             :rabbitmq_vhost    => 'sensu',
+             :redis_host        => '172.16.0.10'
+           )
+      }
+
+    end
+
+    it { is_expected.to contain_class('profiles::apps::sensu::extensions::sensu_influxdb_extension') }
+
+    describe 'profiles::apps::sensu::extensions::sensu_influxdb_extension' do
+
+      it { is_expected.to contain_sensu__plugin('sensu-extensions-influxdb')
+           .with(
+             :type         => 'package',
+             :pkg_version  => '2.1.0',
+             :pkg_provider => 'sensu_gem',
+           )
+      }
+
+      it { is_expected.to contain_file('/etc/sensu/extensions/influxdb.rb')
+           .with(
+             :ensure => 'link',
+             :target => '/opt/sensu/embedded/lib/ruby/gems/2.4.0/gems/sensu-extensions-influxdb-2.1.0/lib/sensu/extensions/influxdb.rb',
+             :owner  => 'sensu',
+             :group  => 'sensu'
+           )
+      }
+
+      it { is_expected.to contain_sensu__write_json('/etc/sensu/conf.d/influxdb-extension.json')
+           .with(:content => { 'influxdb-extension' => { 'hostname' => '172.16.0.12', 'database' => 'sensu' } } )
+      }
+
+    end
+
+    it { is_expected.to contain_class('profiles::apps::sensu::handlers::influxdb') }
+
+    describe 'profiles::apps::sensu::handlers::influxdb' do
+
+      it { is_expected.to contain_sensu__handler('metrics')
+           .with(
+             :type     => 'set',
+             :handlers => [ 'influx-extension' ]
+           )
+      }
+    end
+
+    it { is_expected.to contain_class('profiles::apps::sensu::plugins::sensu_plugins_disk_checks') }
+
+    describe 'profiles::apps::sensu::plugins::sensu_plugins_disk_checks' do
+
+      it { is_expected.to contain_sensu__plugin('sensu-plugins-disk-checks')
+           .with(
+             :type         => 'package',
+             :pkg_provider => 'sensu_gem'
+           )
+      }
+
+    end
+
+    it { is_expected.to contain_class('profiles::apps::sensu::metrics::disk_capacity') }
+
+    describe 'profiles::apps::sensu::metrics::disk_capacity' do
+
+      it { is_expected.to contain_sensu__check('metrics_disk_capacity')
+           .with(
+             :type     => 'metric',
+             :command  => '/opt/sensu/embedded/bin/ruby /opt/sensu/embedded/bin/metrics-disk-capacity.rb',
+             :handlers => [ 'metrics' ]
+           )
+      }
+
+    end
+
+  end
+
   it { is_expected.to contain_class('profiles::confs::uchiwa::standalone') }
+
+  describe 'profiles::confs::uchiwa::standalone' do
+
+    it { is_expected.to contain_class('profiles::apps::uchiwa::base') }
+
+    describe 'profiles::apps::uchiwa::base' do
+
+      it { is_expected.to contain_class('uchiwa')
+           .with(:host => '172.16.0.10')
+      }
+
+    end
+
+  end
 
 end
 
