@@ -10,3 +10,5 @@ fixtures:
     redis: "#{source_dir}/puppet/modules/redis"
     sensu: "#{source_dir}/puppet/modules/sensu"
     uchiwa: "#{source_dir}/puppet/modules/uchiwa"
+    influxdb: "#{source_dir}/puppet/modules/influxdb"
+    grafana: "#{source_dir}/puppet/modules/grafana"

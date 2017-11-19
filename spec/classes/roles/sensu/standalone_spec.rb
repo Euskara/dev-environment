@@ -145,7 +145,7 @@ describe 'roles::sensu::standalone' do
       }
 
       it { is_expected.to contain_sensu__write_json('/etc/sensu/conf.d/influxdb-extension.json')
-           .with(:content => { 'influxdb-extension' => { 'hostname' => '172.16.0.12', 'database' => 'sensu' } } )
+           .with(:content => { 'influxdb-extension' => { 'hostname' => '172.16.0.10', 'database' => 'sensu' } } )
       }
 
     end
@@ -157,7 +157,7 @@ describe 'roles::sensu::standalone' do
       it { is_expected.to contain_sensu__handler('metrics')
            .with(
              :type     => 'set',
-             :handlers => [ 'influx-extension' ]
+             :handlers => [ 'influxdb-extension' ]
            )
       }
     end

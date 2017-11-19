@@ -22,40 +22,40 @@ describe 'roles::rabbitmq::standalone' do
   end
 
   it { is_expected.to contain_class('profiles::confs::rabbitmq::standalone')
-       .with(:ensure => '3.6.12-1.el7',
-             :erlang_ensure => 'R16B-03.18.el7',
-             :users => {
-               'vagrant' => {
-                 'admin' => true,
-                 'password' => 'vagrant',
-               },
-               "dev" => {
-                 "password" => "p4ssw0rd",
-               },
-             },
-             :vhosts => { 
-               'dev' => {
-                 'ensure' => 'present',
-               },
-             },
-             :user_permissions => {
-               'vagrant@/' => {
-                 'configure_permission' => '.*',
-                 'read_permission' => '.*',
-                 'write_permission' => '.*',
-               },
-               "vagrant@dev" => {
-                 "configure_permission" => ".*",
-                 "read_permission" => ".*",
-                 "write_permission" => ".*",
-               },
-               "dev@dev" => {
-                 "configure_permission" => ".*",
-                 "read_permission" => ".*",
-                 "write_permission" => ".*",
-               },
-             }
-      )
+       .with(
+         :ensure => '3.6.12-1.el7', 
+         :erlang_ensure => 'R16B-03.18.el7', 
+         :users => {
+           'vagrant' => {
+             'admin' => true,
+             'password' => 'vagrant',
+           },
+           "dev" => {
+             "password" => "p4ssw0rd",
+           },
+         },
+         :vhosts => { 
+           'dev' => {
+             'ensure' => 'present',
+           },
+         },
+         :user_permissions => {
+           'vagrant@/' => {
+           'configure_permission' => '.*',
+           'read_permission' => '.*',
+           'write_permission' => '.*',
+         },
+         "vagrant@dev" => {
+           "configure_permission" => ".*",
+           "read_permission" => ".*",
+           "write_permission" => ".*",
+         },
+         "dev@dev" => {
+           "configure_permission" => ".*",
+           "read_permission" => ".*",
+           "write_permission" => ".*",
+         },
+       })
   }
 
   describe 'profiles::confs::rabbitmq::standalone' do
