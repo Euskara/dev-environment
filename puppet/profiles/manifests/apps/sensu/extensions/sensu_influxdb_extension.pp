@@ -14,9 +14,13 @@ class profiles::apps::sensu::extensions::sensu_influxdb_extension
   sensu::write_json { '/etc/sensu/conf.d/influxdb-extension.json':
     content => {
       'influxdb-extension' => {
-        'hostname' => '172.16.0.12',
+        'hostname' => $::ipaddress_enp0s8,
         'database' => 'sensu',
       },
-    }
+    },
+    notify  => [
+      Service[ 'sensu-server' ],
+      Service[ 'sensu-client' ],
+    ]
   }
 }
