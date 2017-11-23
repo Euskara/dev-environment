@@ -58,10 +58,10 @@ class profiles::confs::jenkins::bigtop {
   include ::profiles::apps::jenkins::plugins::nexus_artifact_uploader
 
   ::jenkins::job { 'bigtop_build':
-    config => template("static_files/jenkins/bigtop_build.xml.erb"),
+    config => template('static_files/jenkins/bigtop_build.xml.erb'),
   }
   group { 'docker':
-    ensure  => present,
+    ensure => present,
   }
   User <| title == 'jenkins' |> {
     groups  +> 'docker',

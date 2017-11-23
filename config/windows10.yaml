@@ -1,0 +1,8 @@
+---
+nodes:
+  - name: 'windows10'
+    os: 'windows10'
+    environment: 'default'
+    cpu: 1
+    memory: 2048
+    count: 1

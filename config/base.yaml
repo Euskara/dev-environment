@@ -1,0 +1,18 @@
+---
+plugins:
+  vagrant-hostmanager: 1.8.7
+  vagrant-puppet-install: 5.0.0
+hostmanager:
+  enable: true
+  manage_host: true
+  manage_guest: true
+puppet:
+  enable: true
+  version: 'latest'
+  puppet_dir: 'puppet'
+boxes:
+  centos74: 'bento/centos-7.4'
+  ubuntu16: 'ubuntu/xenial64'
+  win2012r2: 'opentable/win-2012r2-standard-amd64-nocm'
+  windows10: 'windows10'
+

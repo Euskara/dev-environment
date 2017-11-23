@@ -1,0 +1,8 @@
+---
+nodes:
+  - name: 'standalone'
+    os: 'centos74'
+    environment: 'rabbitmq'
+    cpu: 2
+    memory: 2048
+    count: 1

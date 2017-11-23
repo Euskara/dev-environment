@@ -1,0 +1,26 @@
+---
+
+profiles::confs::rabbitmq::standalone::erlang_ensure: 'R16B-03.18.el7'
+profiles::confs::rabbitmq::standalone::ensure: '3.6.12-1.el7'
+profiles::confs::rabbitmq::standalone::users:
+  vagrant:
+    admin: true
+    password: 'vagrant'
+  sensu:
+    password: 'sensu'
+profiles::confs::rabbitmq::standalone::vhosts:
+  sensu:
+    ensure: 'present'
+profiles::confs::rabbitmq::standalone::user_permissions:
+  vagrant@/:
+    configure_permission: '.*'
+    read_permission: '.*'
+    write_permission: '.*'
+  vagrant@sensu:
+    configure_permission: '.*'
+    read_permission: '.*'
+    write_permission: '.*'
+  sensu@sensu:
+    configure_permission: '.*'
+    read_permission: '.*'
+    write_permission: '.*'

@@ -1,0 +1,13 @@
+---
+:backends:
+  - yaml
+
+:hierarchy:
+  - "%{::environment}/%{::trusted.certname}"
+  - "%{::environment}"
+  - "base"
+
+:yaml:
+  :datadir: "puppet/hiera"
+
+:merge_behavior: deeper

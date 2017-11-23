@@ -20,7 +20,7 @@ mod 'puppetlabs-java',
 
 #utils modules
 mod 'saz-vim', '2.4.0'                      #2016/11/09
-#mod 'puppetlabs-java', '1.6.0'              #2016/11/09
+mod 'puppetlabs-java', '2.1.0'              #2017/10/25
 mod 'puppet-archive', '1.1.2'               #2016/11/09
 mod 'puppetlabs-git', '0.5.0'               #2016/11/15
 mod 'stankevich-python', '1.18.1'
@@ -34,9 +34,9 @@ mod 'ghoneycutt-ssh', '3.49.0'
 
 mod 'lesaux-kibana4', '1.0.17'              #2016/11/09
 mod 'elasticsearch-logstash', '0.6.4'       #2016/11/09
-mod 'elasticsearch-elasticsearch', '0.14.0' #2016/11/09
+mod 'elastic-elasticsearch', '5.4.3'        #2017/10/25
 
-mod 'rtyler-jenkins', '1.7.0'               #2016/11/15
+# mod 'rtyler-jenkins', '1.7.0'               #2016/11/15
 
 mod 'hubspot-nexus', '1.7.1'                #2016/11/15
 
@@ -50,4 +50,15 @@ mod 'jfryman-nginx', '0.3.0'                #2016/11/21
 
 # Windows modules
 mod 'puppet-windowsfeature', '2.1.0'        #2017/05/16
+mod 'puppetlabs-chocolatey', '3.0.0'
 
+mod 'sensu-sensu', '2.35.0'
+mod 'arioch-redis', '3.1.0'
+mod 'puppet-grafana', '4.0.2'
+mod 'puppet-rabbitmq', '8.0.0'
+mod 'puppet-kafka', '4.0.0'
+mod 'yelp-uchiwa',
+  :git => 'https://github.com/gudari/puppet-uchiwa.git',
+  :ref => '43a13a32af6459a2330858710870a2fa9419296f'
+mod 'golja-influxdb', '4.0.0'
+mod 'garethr-erlang', '0.3.0'

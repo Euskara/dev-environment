@@ -1,0 +1,14 @@
+fixtures:
+  symlinks:
+    roles: "#{source_dir}/puppet/roles"
+    profiles: "#{source_dir}/puppet/profiles"
+
+    epel: "#{source_dir}/puppet/modules/epel"
+    stdlib: "#{source_dir}/puppet/modules/stdlib"
+    rabbitmq: "#{source_dir}/puppet/modules/rabbitmq"
+    archive: "#{source_dir}/puppet/modules/archive"
+    redis: "#{source_dir}/puppet/modules/redis"
+    sensu: "#{source_dir}/puppet/modules/sensu"
+    uchiwa: "#{source_dir}/puppet/modules/uchiwa"
+    influxdb: "#{source_dir}/puppet/modules/influxdb"
+    grafana: "#{source_dir}/puppet/modules/grafana"

@@ -1,7 +1,7 @@
 class profiles::apps::zookeeper::base (
 
-  $id,
-  $servers,
+  $id      = 1 ,
+  $servers = [],
 
 )
 {

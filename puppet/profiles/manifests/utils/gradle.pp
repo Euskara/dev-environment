@@ -5,4 +5,4 @@ class profiles::utils::gradle (
   class { '::gradle':
     version => $version,
   }
-}  
+}

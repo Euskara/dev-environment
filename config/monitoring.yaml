@@ -1,0 +1,20 @@
+---
+nodes:
+  - name: 'standalone'
+    os: 'centos74'
+    environment: 'sensu'
+    cpu: 2
+    memory: 2048
+    count: 1
+  - name: 'standalone'
+    os: 'centos74'
+    environment: 'grafana'
+    cpu: 2
+    memory: 2048
+    count: 1
+  - name: 'standalone'
+    os: 'centos74'
+    environment: 'kafka'
+    cpu: 2
+    memory: 2048
+    count: 1

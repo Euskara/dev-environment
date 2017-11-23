@@ -35,8 +35,8 @@ class profiles::confs::mesos::master (
     cluster  => $cluster_name,
     work_dir => '/var/lib/mesos',
     options  => {
-      quorum => 2,
-      log_dir => $log_dir,
+      quorum        => 2,
+      log_dir       => $log_dir,
       logging_level => 'WARNING',
     },
     require  => File[ $log_dir ],

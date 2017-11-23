@@ -9,9 +9,9 @@ class profiles::apps::elasticsearch::base (
     repo_version      => '2.x',
     version           => $version,
     restart_on_change => true,
-    config => {
+    config            => {
       'network' => {
-        'host' => '0.0.0.0',
+        'host' => $::ipaddress_enp0s8,
       },
     },
   }

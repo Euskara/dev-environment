@@ -23,15 +23,15 @@ class profiles::confs::elk::standalone {
 
   class { '::profiles::utils::java':
     version => $java_version,
-  } ->
-  class { '::profiles::apps::elasticsearch::base':
+  }
+  -> class { '::profiles::apps::elasticsearch::base':
     version       => $elasticsearch_version,
     instance_name => $elasticsearch_instance_name,
-  } ->
-  class { '::profiles::apps::kibana::base':
+  }
+  -> class { '::profiles::apps::kibana::base':
     version => $kibana_version,
-  } ->
-  class { '::profiles::apps::logstash::base':
+  }
+  -> class { '::profiles::apps::logstash::base':
     version => $logstash_version,
   }
   class { '::profiles::apps::elasticsearch::plugins::modz_elasticsearch_head':
